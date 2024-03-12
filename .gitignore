@@ -2,3 +2,4 @@
 .godot/
 rust/target/
 export/
+*.vscode/
