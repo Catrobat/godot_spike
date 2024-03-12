@@ -1,0 +1,15 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.2
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 =     "res://../rust/target/debug/libgodot_plugin.so"
+linux.release.x86_64 =   "res://../rust/target/release/libgodot_plugin.so"
+
+#windows.debug.x86_64 =   "res://../rust/target/debug/{YourCrate}.dll"
+#windows.release.x86_64 = "res://../rust/target/release/{YourCrate}.dll"
+#macos.debug =            "res://../rust/target/debug/lib{YourCrate}.dylib"
+#macos.release =          "res://../rust/target/release/lib{YourCrate}.dylib"
+#macos.debug.arm64 =      "res://../rust/target/debug/lib{YourCrate}.dylib"
+#macos.release.arm64 =    "res://../rust/target/release/lib{YourCrate}.dylib"
