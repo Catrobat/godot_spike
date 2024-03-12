@@ -15,6 +15,10 @@ run/main_scene="res://src/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs2465qtho3bu"]
+[gd_scene load_steps=5 format=3 uid="uid://bs2465qtho3bu"]
 
 [ext_resource type="Texture2D" uid="uid://cm5nmr5u2615d" path="res://icon.svg" id="1_3t52j"]
 [ext_resource type="Script" path="res://src/TestAPI.gd" id="2_fiaue"]
+[ext_resource type="Script" path="res://src/AddButton.gd" id="3_0ic0o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mkiyk"]
 animations = [{
@@ -17,5 +18,19 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(140, -2)
 sprite_frames = SubResource("SpriteFrames_mkiyk")
 script = ExtResource("2_fiaue")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1014.0
+offset_top = 7.0
+offset_right = 1150.0
+offset_bottom = 143.0
+icon = ExtResource("1_3t52j")
+script = ExtResource("3_0ic0o")
+
+[connection signal="button_down" from="Button" to="AnimatedSprite2D" method="_on_button_button_down"]
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
