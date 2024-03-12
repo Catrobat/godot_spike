@@ -1,0 +1,8 @@
+[workspace]
+
+members = [
+    "godot-plugin",
+    "compiler",
+]
+
+resolver = "2"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bs2465qtho3bu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.8, 2.92)
+text = "Hello World"
