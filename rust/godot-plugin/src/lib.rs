@@ -43,4 +43,9 @@ impl API {
     fn get_name() -> GString {
         "Henlo".into()
     }
+
+    #[func]
+    fn add() -> i64 {
+        compiler::add(2, 2) as i64
+    }
 }
