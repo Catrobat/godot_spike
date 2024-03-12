@@ -30,7 +30,7 @@ func on_resource_saved(resource: Resource):
 		if current_script == script:
 			var filepath: String = ProjectSettings.globalize_path(resource.resource_path)
 
-			var exit_code = OS.execute("gdformat", [filepath], output, true)
+			var exit_code = OS.execute("gdformat", [filepath])
 
 			# Replace source_code with formatted source_code
 			if exit_code == SUCCESS:
