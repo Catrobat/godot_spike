@@ -36,7 +36,7 @@ struct API {}
 impl API {
     #[func]
     fn damage(x: i64) -> i64 {
-        return x + 41;
+        return x + 42;
     }
 
     #[func]
