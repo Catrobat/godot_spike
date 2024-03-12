@@ -53,8 +53,8 @@ struct API {}
 #[godot_api]
 impl API {
     #[func]
-    fn damage() -> i32 {
-        return 42;
+    fn damage(x: i64) -> i64 {
+        return x + 41;
     }
 
     #[func]

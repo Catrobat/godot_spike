@@ -8,7 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(API.damage())
-	
-	
-	pass
+	print(API.damage(9223372036854775107))
+	print("hello")
+	print()
