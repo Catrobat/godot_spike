@@ -16,10 +16,6 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" type="Player" parent="."]
-position = Vector2(292, 115)
-texture = ExtResource("1_3t52j")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mkiyk")
 script = ExtResource("2_fiaue")
