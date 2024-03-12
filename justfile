@@ -10,6 +10,10 @@ build-rust:
 	cd rust; cargo build --release
 
 
+
+
+
+
 # -------------
 
 android_keystore := "secrets/debug.keystore"
@@ -19,15 +23,18 @@ android_keystore := "secrets/debug.keystore"
 # Internal Helpers
 
 message := "echo -e \"\n==> \""
+rust_folder := "cd rust; "
+
 
 # -------------
 
 setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-android setup-ios
 
 setup-verify-dependencies:
-	@ {{message}} "Verifying rustup is installed..."
+	@ {{message}} "Verifying all required programs are installed..."
 	rustup --version
 	godot --version
+	gdformat --version
 
 setup-debug-keystore:
 	@ {{message}} "Generating debug keypair for Android..."
