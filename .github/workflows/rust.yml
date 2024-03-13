@@ -6,7 +6,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  "Rust: cargo check":
+  rust-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,7 @@ jobs:
     - name: Rust Build
       run: cd rust; cargo check
 
-  "Rust: cargo clippy":
+  rust-clippy:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
     - name: Rust Clippy
       run: cd rust; cargo clippy
 
-  "Rust: cargo test":
+  rust-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
     - name: Rust Run tests
       run: cd rust; cargo test
 
-  "Rust: cargo fmt":
+  rust-fmt:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +38,7 @@ jobs:
     - name: Rust Format
       run: cd rust; cargo fmt
 
-  "Rust: cargo build --release":
+  rust-build:
     runs-on: ubuntu-latest
 
     steps:
