@@ -1,0 +1,47 @@
+name: Rust
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rust-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Build
+      run: cd rust; cargo check
+
+  rust-clippy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Clippy
+      run: cd rust; cargo clippy
+
+  rust-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Run tests
+      run: cd rust; cargo test
+
+  rust-fmt:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Format
+      run: cd rust; cargo fmt
+
+  rust-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Run tests
+      run: cd rust; cargo build --release
