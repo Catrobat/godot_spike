@@ -11,6 +11,30 @@ export ANDROID_NDK_HOME := "/opt/android-ndk"
 
 message := "echo -e \"\n==> \""
 rustdir := "cd rust;"
+godotdir := "cd godot;"
+
+
+# -------------
+# Godot build commands
+godot-debug-linux:
+	{{godotdir}} godot --headless --export-debug "Linux/X11" "../export/linux/Godot Spike.x86_64"
+	
+godot-debug-android:
+	{{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
+
+godot-debug-windows:
+	{{godotdir}} godot --headless --export-debug "Windows Desktop" "../export/windows/Godot Spike.exe"
+
+
+godot-release-linux:
+	{{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
+	
+godot-release-android:
+	{{godotdir}} godot --headless --export-release "Android" "../export/android/Godot Spike.apk"
+
+godot-release-windows:
+	{{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
+
 
 # -------------
 # Rust build commands
@@ -21,6 +45,10 @@ rust-native:
 rust-android:
 	{{rustdir}} cargo ndk -t arm64-v8a build
 	{{rustdir}} cargo ndk -t arm64-v8a build --release
+
+rust-windows:
+	{{rustdir}} cargo build --target x86_64-pc-windows-gnu
+	{{rustdir}} cargo build --target x86_64-pc-windows-gnu --release
 
 [macos]
 rust-ios:
@@ -34,7 +62,7 @@ android_keystore := "secrets/debug.keystore"
 
 
 
-setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-android setup-ios
+setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-windows setup-android setup-ios
 
 setup-verify-dependencies:
 	@ {{message}} "Verifying all required programs are installed...\nAll programs need to be in \$PATH!"
@@ -60,6 +88,10 @@ setup-android:
 	@ {{message}} "Installing Rust tools for Android builds..."
 	rustup target add aarch64-linux-android
 	cargo install cargo-ndk
+
+setup-windows:
+	@ {{message}} "Installing Rust tools for Windows builds..."
+	rustup target add x86_64-pc-windows-gnu
 
 setup-ios:
 	@ {{message}} "Installing Rust tools for iOS builds..."
