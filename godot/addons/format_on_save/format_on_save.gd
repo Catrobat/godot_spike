@@ -2,7 +2,7 @@
 class_name FormatOnSave extends EditorPlugin
 
 const SUCCESS: int = 0
-const AUTO_RELOAD_SETTING: String = "text_editor/behavior/files/auto_reload_scripts_on_external_change"
+const AUTO_RELOAD_SETTING = "text_editor/behavior/files/auto_reload_scripts_on_external_change"
 var original_auto_reload_setting: bool
 
 

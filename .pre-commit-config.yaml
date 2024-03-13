@@ -8,6 +8,13 @@ repos:
     language: system
     types: [gdscript]
     pass_filenames: true
+  - id: gdlint
+    name: gdlint
+    description: lint gdscript files
+    entry: gdlint
+    language: system
+    types: [gdscript]
+    pass_filenames: true
   - id: fmt
     name: fmt
     description: Format files with cargo fmt.
