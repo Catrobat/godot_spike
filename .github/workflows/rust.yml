@@ -6,12 +6,26 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Rust Build
       run: cd rust; cargo check
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
     - name: Rust Run tests
       run: cd rust; cargo test
+
+  fmt:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Rust Run tests
+      run: cd rust; cargo fmt
