@@ -5,9 +5,14 @@
 - Godot
 - rust (ideally latest stable version via rustup)
 - just
-- gdtoolkit
   IMPORTANT: Needs to be in the path!
+- gdtoolkit
+
+Recommended:
 - pre-commit
+
+For Windows Builds:
+- mingw-w64 (or mingw-w64-gcc)
 
 ## Set up the Repository
 
