@@ -41,11 +41,16 @@ setup-verify-dependencies:
 	rustup --version
 	godot --version
 	gdformat --version
+	pre-commit --version
 
 setup-debug-keystore:
 	@ {{message}} "Generating debug keypair for Android..."
 	test -f {{android_keystore}} \
 	|| keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore {{android_keystore}} -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999 -deststoretype pkcs12
+
+setup-precommit:
+	@ {{message}} "Setting up pre-commit hooks"
+	pre-commit init	
 
 setup-rust:
 	rustup toolchain install stable

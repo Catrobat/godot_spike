@@ -7,6 +7,7 @@
 - just
 - gdtoolkit
   IMPORTANT: Needs to be in the path!
+- pre-commit
 
 ## Set up the Repository
 
@@ -14,7 +15,11 @@
 just setup
 ```
 
-This will generate a local development keypair for Android test builds.
+This command will
+- check whether all development dependencies are present and in $PATH
+- generate development signing keys for Android
+- install pre-commit hooks (automatic formatting and linting before a commit)
+- install the necessary rust components
 
 
 ### Manual Steps
