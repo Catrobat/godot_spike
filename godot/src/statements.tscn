@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://drfjci6wfem2d"]
+
+[ext_resource type="Texture2D" uid="uid://cm5nmr5u2615d" path="res://assets/ui/icon.svg" id="1_r75du"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("1_r75du")
+icon_alignment = 1
