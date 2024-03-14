@@ -8,6 +8,7 @@
   IMPORTANT: Needs to be in the path!
 - gdtoolkit
   IMPORTANT: Binaries of this toolkit need to be in the path!
+- Python 3.x
 
 Recommended:
 - pre-commit
