@@ -7,6 +7,7 @@
 - just
   IMPORTANT: Needs to be in the path!
 - gdtoolkit
+  IMPORTANT: Needs to be in the path!
 
 Recommended:
 - pre-commit
