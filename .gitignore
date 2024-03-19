@@ -1,5 +1,6 @@
+dependencies/
 secrets/
-.godot/
-rust/target/
 export/
+rust/target/
+.godot/
 *.vscode/

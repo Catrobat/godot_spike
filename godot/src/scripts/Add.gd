@@ -11,5 +11,5 @@ func _process(_delta):
 	pass
 
 
-func _on_pressed():
+func _on_pressedQA():
 	get_tree().change_scene_to_file("res://src/scenes/statements.tscn")

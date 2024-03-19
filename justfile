@@ -43,8 +43,8 @@ rust-native:
 	{{rustdir}} cargo build --release
 
 rust-android:
-	{{rustdir}} cargo ndk -t arm64-v8a build
-	{{rustdir}} cargo ndk -t arm64-v8a build --release
+	{{rustdir}} cargo build --target aarch64-linux-android
+	{{rustdir}} cargo build --target aarch64-linux-android --release
 
 rust-windows:
 	{{rustdir}} cargo build --target x86_64-pc-windows-gnu
