@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://drfjci6wfem2d"]
+
+[ext_resource type="Texture2D" uid="uid://cm5nmr5u2615d" path="res://assets/ui/icon.svg" id="1_2xiqy"]
+[ext_resource type="Script" path="res://src/scripts/Statement1.gd" id="2_k0blv"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Statement1" type="Button" parent="."]
+layout_mode = 2
+icon = ExtResource("1_2xiqy")
+icon_alignment = 1
+script = ExtResource("2_k0blv")
+
+[connection signal="pressed" from="Statement1" to="Statement1" method="_on_pressed"]
