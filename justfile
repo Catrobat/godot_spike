@@ -1,7 +1,8 @@
 # -------------
 # Settings
 
-export ANDROID_NDK_HOME := "../dependencies/android-ndk"
+export ANDROID_HOME := `echo "$PWD/dependencies/android-sdk"`
+export ANDROID_SDK_ROOT := `echo "$PWD/dependencies/android-sdk"`
 
 # -------------
 # Internal Helpers
