@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://drfjci6wfem2d"]
+[gd_scene load_steps=2 format=3 uid="uid://drfjci6wfem2d"]
 
-[ext_resource type="Texture2D" uid="uid://cm5nmr5u2615d" path="res://assets/ui/icon.svg" id="1_2xiqy"]
-[ext_resource type="Script" path="res://src/scripts/Statement1.gd" id="2_k0blv"]
+[ext_resource type="Script" path="res://src/scripts/SetStatement.gd" id="2_k0blv"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 clip_contents = true
@@ -11,10 +10,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Statement1" type="Button" parent="."]
+[node name="SetStatement" type="Button" parent="."]
 layout_mode = 2
-icon = ExtResource("1_2xiqy")
+theme_type_variation = &"FlatMenuButton"
+text = "SET(X, Y)"
+clip_text = true
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("2_k0blv")
 
-[connection signal="pressed" from="Statement1" to="Statement1" method="_on_pressed"]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="XLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "x = "
+
+[node name="XAxisInput" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 2
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="YLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "y = "
+
+[node name="YAxisInput" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+alignment = 2
+
+[connection signal="pressed" from="SetStatement" to="SetStatement" method="_on_pressed"]
+[connection signal="text_submitted" from="GridContainer/XAxisInput" to="SetStatement" method="_on_x_axis_input_text_submitted"]
