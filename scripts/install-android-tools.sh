@@ -30,4 +30,6 @@ curl $ANDROID_CMDLINE_URL --output /tmp/android_cmd.zip
 unzip -d $ANDROID_SDK_ROOT /tmp/android_cmd.zip
 
 # install rest of the requirements using sdkmanager
-yes "y" | $_SDKMANAGER --install $SDKMANAGER_PACKAGES --sdk_root="$ANDROID_SDK_ROOT"
+yes "y" | $_SDKMANAGER --install $SDKMANAGER_PACKAGES --sdk_root="$ANDROID_SDK_ROOT" || true
+
+exit 0

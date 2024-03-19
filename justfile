@@ -88,6 +88,9 @@ setup-android:
 	@ {{message}} "Installing Rust tools for Android builds..."
 	rustup target add aarch64-linux-android
 	cargo install cargo-ndk
+	@ {{message}} "Installing Android NDK & SDK in the dependencies folder..."
+	scripts/install-android-tools.sh
+
 
 setup-windows:
 	@ {{message}} "Installing Rust tools for Windows builds..."
