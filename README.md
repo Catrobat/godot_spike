@@ -47,3 +47,7 @@ Enable in the project settings.
 
 In order to export the created project you need to download the template. There is a link under `Project -> Export...` if you don't have it installed yet.
 
+
+# Development
+
+![alt text](https://preview.redd.it/gdstyle-naming-convention-and-code-order-cheat-sheet-i-made-v0-fja8svy2b9y91.png?width=1080&crop=smart&auto=webp&s=fac15d4f4d9eda59223391acbe89623d5b8a77d8)
