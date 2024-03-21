@@ -1,8 +1,16 @@
+use godot::builtin::Array;
 use godot::engine::Engine;
 use godot::prelude::*;
 
+use std::sync::{Mutex, OnceLock};
+
 // Register this plugin as a Godot Extension
 struct MyExtension {}
+
+fn ast() -> &'static Mutex<Vec<i64>> {
+    static AST: OnceLock<Mutex<Vec<i64>>> = OnceLock::new();
+    AST.get_or_init(|| Mutex::new(vec![]))
+}
 
 #[gdextension]
 unsafe impl ExtensionLibrary for MyExtension {
@@ -35,17 +43,13 @@ struct Api {}
 #[godot_api]
 impl Api {
     #[func]
-    fn damage(x: i64) -> i64 {
-        x + 42
+    fn insert(x: i64) {
+        ast().lock().unwrap().push(x);
     }
 
     #[func]
-    fn get_name() -> GString {
-        "Henlo".into()
-    }
-
-    #[func]
-    fn add() -> i64 {
-        compiler::add(2, 2) as i64
+    fn get_ast() -> Array<i64> {
+        let ast = ast().lock().unwrap();
+        ast[..].into()
     }
 }
