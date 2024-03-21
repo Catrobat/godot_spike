@@ -3,7 +3,7 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass  # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,4 +12,12 @@ func _process(_delta):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/main.tscn")  # Replace with function body.
+	pass
+
+
+func _on_line_edit_text_submitted(new_text):
+	print(new_text)
+
+
+func _on_x_axis_input_text_submitted(new_text):
+	print(new_text)
