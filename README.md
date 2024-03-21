@@ -4,11 +4,11 @@
 
 - Godot
 - rust (ideally latest stable version via rustup)
-- just
+- mold (distro repositories)
+- just (cargo install)
   IMPORTANT: Needs to be in the path!
-- gdtoolkit
+- gdtoolkit (distro repos / pip install)
   IMPORTANT: Binaries of this toolkit need to be in the path!
-- Python 3.x
 
 Recommended:
 - pre-commit

@@ -1,10 +1,8 @@
-
-build-all: rust-native rust-android
-
 # -------------
 # Settings
 
-export ANDROID_NDK_HOME := "/opt/android-ndk"
+export ANDROID_HOME := `echo "$PWD/dependencies/android-sdk"`
+export ANDROID_SDK_ROOT := `echo "$PWD/dependencies/android-sdk"`
 
 # -------------
 # Internal Helpers
@@ -14,41 +12,32 @@ rustdir := "cd rust;"
 godotdir := "cd godot;"
 
 
-# -------------
-# Godot build commands
-godot-debug-linux:
+# Exporting binaries
+
+linux-debug:
+	{{rustdir}} cargo build
 	{{godotdir}} godot --headless --export-debug "Linux/X11" "../export/linux/Godot Spike.x86_64"
 	
-godot-debug-android:
+linux-release:
+	{{rustdir}} cargo build --release
+	{{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
+
+android-debug:
+	{{rustdir}} cargo build --target aarch64-linux-android
 	{{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
 
-godot-debug-windows:
-	{{godotdir}} godot --headless --export-debug "Windows Desktop" "../export/windows/Godot Spike.exe"
-
-
-godot-release-linux:
-	{{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
-	
-godot-release-android:
+android-release:
+	{{rustdir}} cargo build --target aarch64-linux-android --release
 	{{godotdir}} godot --headless --export-release "Android" "../export/android/Godot Spike.apk"
 
-godot-release-windows:
+windows-debug:
+	{{rustdir}} cargo build --target x86_64-pc-windows-gnu
+	{{godotdir}} godot --headless --export-debug "Windows Desktop" "../export/windows/Godot Spike.exe"
+
+windows-release:
+	{{rustdir}} cargo build --target x86_64-pc-windows-gnu --release
 	{{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
 
-
-# -------------
-# Rust build commands
-rust-native:
-	{{rustdir}} cargo build
-	{{rustdir}} cargo build --release
-
-rust-android:
-	{{rustdir}} cargo ndk -t arm64-v8a build
-	{{rustdir}} cargo ndk -t arm64-v8a build --release
-
-rust-windows:
-	{{rustdir}} cargo build --target x86_64-pc-windows-gnu
-	{{rustdir}} cargo build --target x86_64-pc-windows-gnu --release
 
 [macos]
 rust-ios:
@@ -88,6 +77,9 @@ setup-android:
 	@ {{message}} "Installing Rust tools for Android builds..."
 	rustup target add aarch64-linux-android
 	cargo install cargo-ndk
+	@ {{message}} "Installing Android NDK & SDK in the dependencies folder..."
+	scripts/install-android-tools.sh
+
 
 setup-windows:
 	@ {{message}} "Installing Rust tools for Windows builds..."

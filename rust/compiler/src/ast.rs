@@ -26,5 +26,7 @@ pub struct Message {
 pub enum Expression {
     Addition(Box<Expression>, Box<Expression>),
     Subtraction(Box<Expression>, Box<Expression>),
+    Multiplication(Box<Expression>, Box<Expression>),
+    Division(Box<Expression>, Box<Expression>),
     IntLiteral(i64),
 }
