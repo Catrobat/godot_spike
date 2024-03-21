@@ -4,12 +4,14 @@ use godot::prelude::*;
 
 use std::sync::{Mutex, OnceLock};
 
+use compiler::Ast;
+
 // Register this plugin as a Godot Extension
 struct MyExtension {}
 
-fn ast() -> &'static Mutex<Vec<i64>> {
-    static AST: OnceLock<Mutex<Vec<i64>>> = OnceLock::new();
-    AST.get_or_init(|| Mutex::new(vec![]))
+fn ast() -> &'static Mutex<Ast> {
+    static AST: OnceLock<Mutex<Ast>> = OnceLock::new();
+    AST.get_or_init(|| Mutex::new(Ast::default()))
 }
 
 #[gdextension]
@@ -43,13 +45,35 @@ struct Api {}
 #[godot_api]
 impl Api {
     #[func]
-    fn insert(x: i64) {
-        ast().lock().unwrap().push(x);
+    fn insert(_x: i64) {
+        ast().lock().unwrap().append();
     }
 
     #[func]
     fn get_ast() -> Array<i64> {
         let ast = ast().lock().unwrap();
-        ast[..].into()
+        ast.to_godot_ast()
+    }
+}
+
+trait ToGodotAst {
+    fn to_godot_ast(&self) -> Array<i64>;
+}
+
+impl ToGodotAst for Ast {
+    fn to_godot_ast(&self) -> Array<i64> {
+        self.statements()
+            .iter()
+            .map(to_godot_ast)
+            .collect::<Array<i64>>()
+    }
+}
+
+fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
+    use compiler::ast::Statement;
+    match a {
+        Statement::Move() => 1,
+        Statement::Print(_str) => 2,
+        Statement::Message(_str) => 3,
     }
 }
