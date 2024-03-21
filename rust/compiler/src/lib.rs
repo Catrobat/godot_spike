@@ -13,8 +13,4 @@ impl Ast {
     pub fn statements(&self) -> &[ast::Statement] {
         &self.statements
     }
-
-    pub fn test() -> bool {
-        true
-    }
 }
