@@ -1,29 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs2465qtho3bu"]
+[gd_scene load_steps=4 format=3 uid="uid://bs2465qtho3bu"]
 
-[ext_resource type="Texture2D" uid="uid://mxv4kvxhx8io" path="res://assets/ui/path107.svg" id="1_f6l84"]
-[ext_resource type="Script" path="res://src/scripts/Add.gd" id="2_tkssd"]
+[ext_resource type="Script" path="res://src/scripts/main.gd" id="1_1nmhd"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
-anchors_preset = -1
-anchor_right = 1.003
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kefq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6hla"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.559998
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.00174533
-size_flags_stretch_ratio = 1.99
+script = ExtResource("1_1nmhd")
 
-[node name="AddStatement" type="Button" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(100, 100)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="MainScreenHBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_direction = 3
 layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-text = "New "
-icon = ExtResource("1_f6l84")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("2_tkssd")
 
-[connection signal="pressed" from="AddStatement" to="AddStatement" method="_on_pressed"]
+[node name="AddSpriteButton" type="Button" parent="MarginContainer/MainScreenHBoxContainer"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kefq6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s6hla")
+text = "New Sprite"
+icon_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(392, 400)
+exclusive = false
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+dialog_autowrap = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[connection signal="pressed" from="MarginContainer/MainScreenHBoxContainer/AddSpriteButton" to="." method="_on_add_sprite_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainScreenHBoxContainer/AddSpriteButton" to="MarginContainer/MainScreenHBoxContainer" method="_on_add_number_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

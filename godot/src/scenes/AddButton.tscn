@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://btvekcxpfheas"]
+
+[ext_resource type="Script" path="res://src/scripts/AddButton.gd" id="1_s162p"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6y0t"]
+
+[sub_resource type="GDScript" id="GDScript_ecwlk"]
+script/source = "extends Button
+
+
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_s162p")
+
+[node name="AddNumberButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Add
+Number"
+icon = SubResource("CompressedTexture2D_b6y0t")
+icon_alignment = 1
+script = SubResource("GDScript_ecwlk")
+
+[node name="Popup" type="Popup" parent="."]
+title = "Add number"
+initial_position = 2
+size = Vector2i(434, 100)
+visible = true
+unresizable = false
+borderless = false
+always_on_top = true
+
+[node name="GridContainer" type="GridContainer" parent="Popup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -20.0
+offset_right = 49.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NumberInputLineEdit" type="LineEdit" parent="Popup/GridContainer"]
+layout_mode = 2
+placeholder_text = "number input"
+expand_to_text_length = true
+
+[node name="SubmitButton" type="Button" parent="Popup/GridContainer"]
+layout_mode = 2
+text = "Submit"
+
+[connection signal="pressed" from="HBoxContainer/AddNumberButton" to="HBoxContainer" method="_on_add_number_button_pressed"]
+[connection signal="text_changed" from="Popup/GridContainer/NumberInputLineEdit" to="HBoxContainer" method="_on_number_input_line_edit_text_changed"]
+[connection signal="pressed" from="Popup/GridContainer/SubmitButton" to="HBoxContainer" method="_on_submit_button_pressed"]
