@@ -11,40 +11,40 @@ jobs:
   rust-build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: "rust -> target"
-    - uses: actions/checkout@v4
-    - name: Rust Run tests
+    - name: Rust Build
       run: cd rust; cargo build --release
 
   rust-clippy:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: "rust -> target"
-    - uses: actions/checkout@v4
     - name: Rust Clippy
       run: cd rust; cargo clippy
 
   rust-test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: "rust -> target"
-    - uses: actions/checkout@v4
     - name: Rust Run tests
       run: cd rust; cargo test
 
   rust-fmt:
     runs-on: ubuntu-latest
     steps:
-    - uses: rui314/setup-mold@v1
     - uses: actions/checkout@v4
+    - uses: rui314/setup-mold@v1
     - name: Rust Format
       run: cd rust; cargo fmt -- --check
