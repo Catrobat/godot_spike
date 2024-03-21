@@ -5,6 +5,8 @@ on: [push]
 env:
   CARGO_TERM_COLOR: always
   RUSTFLAGS: -Dwarnings
+  SCCACHE_GHA_ENABLED: "true"
+  RUSTC_WRAPPER: "sccache"
 
 jobs:
   rust-build:
@@ -12,10 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
-    - uses: Swatinem/rust-cache@v2
-      with:
-        cache-targets: true
-        cache-all-crates: true
+    - uses: mozilla-actions/sccache-action@v0.0.4
     - name: Rust Run tests
       run: cd rust; cargo build --release
 
@@ -24,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
-    - uses: Swatinem/rust-cache@v2
+    - uses: mozilla-actions/sccache-action@v0.0.4
       with:
         cache-targets: true
         cache-all-crates: true
@@ -36,7 +35,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
-    - uses: Swatinem/rust-cache@v2
+    - uses: mozilla-actions/sccache-action@v0.0.4
       with:
         cache-targets: true
         cache-all-crates: true
@@ -48,5 +47,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: rui314/setup-mold@v1
+    - uses: mozilla-actions/sccache-action@v0.0.4
     - name: Rust Format
       run: cd rust; cargo fmt -- --check
