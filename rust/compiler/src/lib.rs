@@ -1,18 +1,16 @@
-mod ast;
+pub mod ast;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+#[derive(Default)]
+pub struct Ast {
+    statements: Vec<ast::Statement>,
 }
 
-pub fn new_object() {}
+impl Ast {
+    pub fn append(&mut self) {
+        self.statements.push(ast::Statement::Move());
+    }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    pub fn statements(&self) -> &[ast::Statement] {
+        &self.statements
     }
 }
