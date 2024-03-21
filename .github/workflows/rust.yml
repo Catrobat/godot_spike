@@ -14,7 +14,7 @@ jobs:
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
-        workspaces: "rust -> rust/target"
+        workspaces: "rust -> target"
     - uses: actions/checkout@v4
     - name: Rust Run tests
       run: cd rust; cargo build --release
@@ -25,7 +25,7 @@ jobs:
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
-        workspaces: "rust -> rust/target"
+        workspaces: "rust -> target"
     - uses: actions/checkout@v4
     - name: Rust Clippy
       run: cd rust; cargo clippy
@@ -36,7 +36,7 @@ jobs:
     - uses: rui314/setup-mold@v1
     - uses: Swatinem/rust-cache@v2
       with:
-        workspaces: "rust -> rust/target"
+        workspaces: "rust -> target"
     - uses: actions/checkout@v4
     - name: Rust Run tests
       run: cd rust; cargo test
