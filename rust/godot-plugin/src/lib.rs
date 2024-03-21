@@ -9,7 +9,7 @@ unsafe impl ExtensionLibrary for MyExtension {
     fn on_level_init(level: InitLevel) {
         if level == InitLevel::Scene {
             Engine::singleton()
-                .register_singleton(StringName::from("API"), API::new_alloc().upcast());
+                .register_singleton(StringName::from("API"), Api::new_alloc().upcast());
         }
     }
 
@@ -30,13 +30,13 @@ unsafe impl ExtensionLibrary for MyExtension {
 // Implementation of the API
 #[derive(GodotClass)]
 #[class(base=Object, init)]
-struct API {}
+struct Api {}
 
 #[godot_api]
-impl API {
+impl Api {
     #[func]
     fn damage(x: i64) -> i64 {
-        return x + 42;
+        x + 42
     }
 
     #[func]
