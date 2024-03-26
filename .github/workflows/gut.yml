@@ -1,0 +1,16 @@
+name: "Godot"
+on: push
+
+jobs:
+  execute-gut:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Execute GUT Unit Test
+        uses: ceceppa/godot-gut-ci@main
+        with:
+          godot_version: 4.2.1
+          gut_params: -gdir=res://src/test/unit -gprefix=test_ -gsuffix=.gd
+          project_path: godot
