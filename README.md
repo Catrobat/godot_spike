@@ -33,14 +33,15 @@ This command will
 
 
 #### Keystore
+
 You need to set your android keystore to this file in godot.
 See: 
 
 https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_android.html#setting-it-up-in-godot
 
-#### GDFormatter
+#### Plugins
 
-Enable in the project settings.
+You need to enable all the plugins, which we ship by default under `Project -> Project Settings... -> Plugins -> Check Status Enable`. 
 
 
 ## Exporting Project
