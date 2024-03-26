@@ -8,6 +8,7 @@ repos:
     language: system
     types: [gdscript]
     pass_filenames: true
+    exclude: godot/addons/
   - id: gdlint
     name: gdlint
     description: lint gdscript files
@@ -15,6 +16,7 @@ repos:
     language: system
     types: [gdscript]
     pass_filenames: true
+    exclude: godot/addons/
   - id: fmt
     name: fmt
     description: Format files with cargo fmt.
