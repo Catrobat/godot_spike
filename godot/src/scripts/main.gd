@@ -21,7 +21,7 @@ func _on_file_dialog_file_selected(path):
 	if image.load(path) != OK:
 		return
 
-	sprite.texture = ImageTexture.new().create_from_image(image)
+	sprite.texture = ImageTexture.create_from_image(image)
 
 	var screen_size = get_viewport_rect().size
 	var sprite_size = sprite.texture.get_size()
