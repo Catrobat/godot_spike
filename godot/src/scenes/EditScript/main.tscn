@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs2465qtho3bu"]
+
+[ext_resource type="Script" path="res://src/scripts/main.gd" id="1_vj3ix"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vj3ix")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="MainScreenHBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(511, 400)
+exclusive = false
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+dialog_autowrap = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

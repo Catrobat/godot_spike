@@ -1,21 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://btvekcxpfheas"]
+[gd_scene load_steps=3 format=3 uid="uid://btvekcxpfheas"]
 
-[ext_resource type="Script" path="res://src/scripts/AddButton.gd" id="1_s162p"]
+[ext_resource type="Script" path="res://src/scripts/main.gd" id="1_6d6qn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6y0t"]
-
-[sub_resource type="GDScript" id="GDScript_ecwlk"]
-script/source = "extends Button
-
-
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,7 +17,7 @@ layout_direction = 3
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
-script = ExtResource("1_s162p")
+script = ExtResource("1_6d6qn")
 
 [node name="AddNumberButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -38,7 +25,6 @@ text = "Add
 Number"
 icon = SubResource("CompressedTexture2D_b6y0t")
 icon_alignment = 1
-script = SubResource("GDScript_ecwlk")
 
 [node name="Popup" type="Popup" parent="."]
 title = "Add number"
