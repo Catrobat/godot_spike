@@ -5,6 +5,7 @@ use godot::prelude::*;
 use std::sync::{Mutex, OnceLock};
 
 use compiler::Ast;
+use compiler::Compilable;
 
 // Register this plugin as a Godot Extension
 struct MyExtension {}
@@ -53,6 +54,12 @@ impl Api {
     fn get_ast() -> Array<i64> {
         let ast = ast().lock().unwrap();
         ast.to_godot_ast()
+    }
+
+    #[func]
+    fn compile() -> GString {
+        let ast = ast().lock().unwrap();
+        ast.compile().into()
     }
 }
 
