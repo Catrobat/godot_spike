@@ -3,7 +3,7 @@ on: push
 
 jobs:
   execute-gut:
-    name: Run Unit Tests
+    name: unit-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
