@@ -40,14 +40,17 @@ unsafe impl ExtensionLibrary for MyExtension {
 
 // Implementation of the API
 #[derive(GodotClass)]
-#[class(base=Object, init)]
-struct Api {}
+#[class(base=Node, init)]
+struct Api {
+    base: Base<Node>,
+}
 
 #[godot_api]
 impl Api {
     #[func]
-    fn insert(_x: i64) {
+    fn insert(&self, _x: i64) {
         ast().lock().unwrap().append();
+        global_notify(GlobalSignals::ScriptUpdated);
     }
 
     #[func]
@@ -83,4 +86,26 @@ fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
         Statement::Print(_str) => 2,
         Statement::Message(_str) => 3,
     }
+}
+
+// -----------------------------------------------------------
+//
+
+enum GlobalSignals {
+    ScriptUpdated,
+}
+
+fn global_notify(signal: GlobalSignals) {
+    godot::log::godot_warn!("{:?}", Engine::singleton().get_singleton_list());
+
+    let mut global_signals = Engine::singleton()
+        .get_singleton(StringName::from("GlobalSignals"))
+        .expect("Global Signal handler could not be found.");
+
+    let signal_name = match signal {
+        GlobalSignals::ScriptUpdated => "SCRIPT_UPDATED",
+    }
+    .into();
+
+    global_signals.emit_signal(signal_name, &vec![]);
 }

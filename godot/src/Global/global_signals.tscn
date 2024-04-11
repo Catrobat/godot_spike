@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdryv44p48p8k"]
+
+[ext_resource type="Script" path="res://src/Global/global_signals.gd" id="1_0vaqe"]
+
+[node name="GlobalSignals" type="Node"]
+script = ExtResource("1_0vaqe")
+
+[connection signal="SCRIPT_UPDATED" from="." to="." method="_on_script_updated"]
