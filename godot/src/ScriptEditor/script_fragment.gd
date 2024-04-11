@@ -1,6 +1,6 @@
 extends Node
 
-var MoveFragment: Resource = preload("res://src/scenes/move_fragment.tscn")
+var MoveFragment: Resource = preload("res://src/ScriptEditor/move_fragment.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
