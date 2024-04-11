@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://d367y1tdplhxk"]
+
+[ext_resource type="Script" path="res://src/ProjectSelector/project_selector.gd" id="1_1xuji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acgo3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3m21s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3up1"]
+
+[node name="ProjectSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xuji")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -15.0
+offset_right = 59.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CreateProjectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_acgo3")
+text = "Create Project"
+
+[node name="LoadProjectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3m21s")
+text = "Load Project"
+
+[node name="CreateProjectWindow" type="Window" parent="."]
+title = "Create Project"
+position = Vector2i(100, 200)
+size = Vector2i(395, 123)
+visible = false
+wrap_controls = true
+popup_window = true
+mouse_passthrough = true
+
+[node name="GridContainer" type="GridContainer" parent="CreateProjectWindow"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -33.0
+offset_right = 36.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProjectNameLineEdit" type="LineEdit" parent="CreateProjectWindow/GridContainer"]
+layout_mode = 2
+placeholder_text = "Project Name"
+alignment = 1
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="SubmitButton" type="Button" parent="CreateProjectWindow/GridContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i3up1")
+text = "Submit"
+
+[node name="RequiredNameLabel" type="Label" parent="CreateProjectWindow/GridContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.839216, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Project Name Required"
+
+[node name="ProjectsVBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CreateProjectButton" to="." method="_on_create_project_button_pressed"]
+[connection signal="close_requested" from="CreateProjectWindow" to="." method="_on_create_project_window_close_requested"]
+[connection signal="text_changed" from="CreateProjectWindow/GridContainer/ProjectNameLineEdit" to="." method="_on_project_name_line_edit_text_changed"]
+[connection signal="pressed" from="CreateProjectWindow/GridContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

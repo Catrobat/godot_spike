@@ -14,7 +14,7 @@ func _process(_delta):
 
 
 func _on_add_sprite_button_pressed():
-	$FileDialog.popup()
+	$FileDialog.popup_centered()
 
 
 func _on_file_dialog_file_selected(path):
