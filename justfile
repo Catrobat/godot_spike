@@ -10,9 +10,10 @@ export ANDROID_SDK_ROOT := `echo "$PWD/dependencies/android-sdk"`
 message := "echo -e \"\n==> \""
 rustdir := "cd rust;"
 godotdir := "cd godot;"
+android_keystore := "secrets/debug.keystore"
 
-
-# Exporting binaries
+# -------------
+# Export binaries for different platforms
 
 linux-debug:
 	{{rustdir}} cargo build
@@ -39,17 +40,18 @@ windows-release:
 	{{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
 
 
+# -------------
+# TODO: Build for IOS
+
 [macos]
 rust-ios:
     # NOTE: can only work on MacOS with xcode
     # untested
     {{rustdir}} cargo +aarch64-apple-ios build --release
 
+
 # -------------
-
-android_keystore := "secrets/debug.keystore"
-
-
+# Execute prior to development of project
 
 setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-windows setup-android setup-ios
 
@@ -79,7 +81,6 @@ setup-android:
 	cargo install cargo-ndk
 	@ {{message}} "Installing Android NDK & SDK in the dependencies folder..."
 	scripts/install-android-tools.sh
-
 
 setup-windows:
 	@ {{message}} "Installing Rust tools for Windows builds..."
