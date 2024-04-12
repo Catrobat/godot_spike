@@ -15,6 +15,10 @@ run/main_scene="res://src/ProjectSelector/project_selector.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/ui/icon.svg"
 
+[autoload]
+
+GlobalSignals="*res://src/Global/global_signals.tscn"
+
 [display]
 
 window/size/viewport_width=480

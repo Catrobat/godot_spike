@@ -40,14 +40,17 @@ unsafe impl ExtensionLibrary for MyExtension {
 
 // Implementation of the API
 #[derive(GodotClass)]
-#[class(base=Object, init)]
-struct Api {}
+#[class(base=Node, init)]
+struct Api {
+    base: Base<Node>,
+}
 
 #[godot_api]
 impl Api {
     #[func]
-    fn insert(_x: i64) {
+    fn insert(&self, _x: i64) {
         ast().lock().unwrap().append();
+        global_notify(GlobalSignals::ScriptUpdated);
     }
 
     #[func]
@@ -83,4 +86,35 @@ fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
         Statement::Print(_str) => 2,
         Statement::Message(_str) => 3,
     }
+}
+
+// -----------------------------------------------------------
+//
+
+enum GlobalSignals {
+    ScriptUpdated,
+}
+
+fn global_notify(signal: GlobalSignals) {
+    let mut global_signals = get_autoload("/root/GlobalSignals");
+
+    let signal_name = match signal {
+        GlobalSignals::ScriptUpdated => "SCRIPT_UPDATED",
+    }
+    .into();
+
+    global_signals.emit_signal(signal_name, &[]);
+}
+
+fn get_autoload(name: &str) -> Gd<Node> {
+    let name: NodePath = StringName::from(name).into();
+
+    Engine::singleton()
+        .get_main_loop()
+        .expect("could not get main loop")
+        .cast::<SceneTree>()
+        .get_root()
+        .expect("could not get root of scene")
+        .get_node(name)
+        .expect("could not find element in scene")
 }
