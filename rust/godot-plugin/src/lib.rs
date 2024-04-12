@@ -96,11 +96,7 @@ enum GlobalSignals {
 }
 
 fn global_notify(signal: GlobalSignals) {
-    godot::log::godot_warn!("{:?}", Engine::singleton().get_singleton_list());
-
-    let mut global_signals = Engine::singleton()
-        .get_singleton(StringName::from("GlobalSignals"))
-        .expect("Global Signal handler could not be found.");
+    let mut global_signals = get_autoload("/root/GlobalSignals");
 
     let signal_name = match signal {
         GlobalSignals::ScriptUpdated => "SCRIPT_UPDATED",
@@ -108,4 +104,17 @@ fn global_notify(signal: GlobalSignals) {
     .into();
 
     global_signals.emit_signal(signal_name, &vec![]);
+}
+
+fn get_autoload(name: &str) -> Gd<Node> {
+    let name: NodePath = StringName::from(name).into();
+
+    Engine::singleton()
+        .get_main_loop()
+        .expect("could not get main loop")
+        .cast::<SceneTree>()
+        .get_root()
+        .expect("could not get root of scene")
+        .get_node(name.into())
+        .expect("could not find element in scene")
 }

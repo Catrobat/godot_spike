@@ -14,6 +14,9 @@ func _process(delta):
 
 
 func _on_pressed():
+	#var test = get_node("/root/GlobalSignals")
+	#print(test)
+
 	API.insert(Constants.FRAGID_MOVE)
 
 
