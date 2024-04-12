@@ -103,7 +103,7 @@ fn global_notify(signal: GlobalSignals) {
     }
     .into();
 
-    global_signals.emit_signal(signal_name, &vec![]);
+    global_signals.emit_signal(signal_name, &[]);
 }
 
 fn get_autoload(name: &str) -> Gd<Node> {
@@ -115,6 +115,6 @@ fn get_autoload(name: &str) -> Gd<Node> {
         .cast::<SceneTree>()
         .get_root()
         .expect("could not get root of scene")
-        .get_node(name.into())
+        .get_node(name)
         .expect("could not find element in scene")
 }
