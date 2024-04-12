@@ -55,7 +55,7 @@ text = "Load Project"
 [node name="ProjectsMenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-text = "Hello"
+text = "Your Projects"
 flat = false
 
 [node name="CreateProjectWindow" type="Window" parent="."]
