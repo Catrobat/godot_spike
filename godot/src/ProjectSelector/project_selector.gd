@@ -27,9 +27,11 @@ func _on_submit_button_pressed():
 	if self.new_project_name.is_empty():
 		$CreateProjectWindow/GridContainer/RequiredNameLabel.visible = true
 		return
-	get_node("ProjectsVBoxContainer").add_child(new_project)
+	$MarginContainer/VBoxContainer/ProjectsMenuButton.get_popup().add_item(self.new_project_name)
+	$MarginContainer/VBoxContainer/ProjectsMenuButton.get_popup().id_pressed.connect(
+		_on_new_project_button_pressed
+	)
 	$CreateProjectWindow.hide()
-	new_project.pressed.connect(_on_new_project_button_pressed)
 
 
 func _on_project_name_line_edit_text_changed(new_text):
@@ -37,5 +39,5 @@ func _on_project_name_line_edit_text_changed(new_text):
 	new_project_name = new_text
 
 
-func _on_new_project_button_pressed():
+func _on_new_project_button_pressed(_id: int):
 	get_tree().change_scene_to_file("res://src/SpriteSelector/main.tscn")
