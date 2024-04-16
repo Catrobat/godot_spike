@@ -90,7 +90,6 @@ fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
 
 // -----------------------------------------------------------
 //
-
 enum GlobalSignals {
     ScriptUpdated,
 }
