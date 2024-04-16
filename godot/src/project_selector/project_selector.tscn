@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d367y1tdplhxk"]
 
-[ext_resource type="Script" path="res://src/ProjectSelector/project_selector.gd" id="1_1xuji"]
+[ext_resource type="Script" path="res://src/project_selector/project_selector.gd" id="1_1xuji"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acgo3"]
 

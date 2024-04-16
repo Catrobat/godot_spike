@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs2465qtho3bu"]
 
-[ext_resource type="Script" path="res://src/SpriteSelector/add_sprite.gd" id="1_30kba"]
+[ext_resource type="Script" path="res://src/sprite_selector/add_sprite.gd" id="1_30kba"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kefq6"]
 

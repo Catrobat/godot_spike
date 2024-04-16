@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rsvepepjglmt"]
 
-[ext_resource type="Script" path="res://src/SpriteSelector/sprite.gd" id="1_p6m3n"]
+[ext_resource type="Script" path="res://src/sprite_selector/sprite.gd" id="1_p6m3n"]
 
 [node name="SpriteButton" type="Button"]
 custom_minimum_size = Vector2(80, 30)

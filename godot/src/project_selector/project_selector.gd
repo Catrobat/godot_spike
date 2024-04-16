@@ -36,9 +36,6 @@ func _on_submit_button_pressed():
 	$MarginContainer/VBoxContainer/YourProjectsMenuButton.get_popup().add_item(
 		self.new_project_name
 	)
-	$MarginContainer/VBoxContainer/YourProjectsMenuButton.get_popup().id_pressed.connect(
-		_on_new_project_button_pressed
-	)
 	$CreateProjectWindow.hide()
 
 
@@ -48,7 +45,7 @@ func _on_project_name_line_edit_text_changed(new_text):
 
 
 func _on_new_project_button_pressed(_id: int):
-	get_tree().change_scene_to_file("res://src/SpriteSelector/add_sprite.tscn")
+	get_tree().change_scene_to_file("res://src/sprite_selector/add_sprite.tscn")
 
 
 func _on_your_projects_menu_button_pressed():
