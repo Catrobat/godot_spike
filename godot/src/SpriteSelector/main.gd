@@ -5,7 +5,7 @@ var Sprites: Resource = preload("res://src/SpriteSelector/sprite.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass  # Replace with function body.
+	_on_file_dialog_file_selected("default sprite")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
