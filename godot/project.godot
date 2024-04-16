@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Godot Spike"
-run/main_scene="res://src/ProjectSelector/project_selector.tscn"
+run/main_scene="res://src/project_selector/project_selector.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://assets/ui/icon.svg"
 
 [autoload]
 
-GlobalSignals="*res://src/Global/global_signals.tscn"
+GlobalSignals="*res://src/global/global_signals.tscn"
 
 [display]
 

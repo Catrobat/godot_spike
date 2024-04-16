@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rsvepepjglmt"]
 
-[ext_resource type="Script" path="res://src/ScriptEditor/script_fragment.gd" id="1_koyt3"]
-[ext_resource type="PackedScene" uid="uid://btvekcxpfheas" path="res://src/ScriptEditor/move_fragment.tscn" id="2_llv2k"]
+[ext_resource type="Script" path="res://src/script_editor/script_fragment.gd" id="1_koyt3"]
+[ext_resource type="PackedScene" uid="uid://btvekcxpfheas" path="res://src/script_editor/move_fragment.tscn" id="2_llv2k"]
 
 [node name="ScriptEditor" type="Control"]
 layout_mode = 3

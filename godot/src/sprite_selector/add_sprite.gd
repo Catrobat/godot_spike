@@ -1,6 +1,6 @@
 extends Control
 
-var Sprites: Resource = preload("res://src/SpriteSelector/sprite.tscn")
+var Sprites: Resource = preload("res://src/sprite_selector/sprite.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

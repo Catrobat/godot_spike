@@ -1,12 +1,12 @@
 extends Node
 
-const MoveFragmentLabel: Resource = preload("res://src/ScriptEditor/move_fragment_label.tscn")
+const MoveFragmentLabel: Resource = preload("res://src/script_editor/move_fragment_label.tscn")
 
 
 func _ready():
 	GlobalSignals.connect("script_updated", _on_script_updated)
 
-	var ast = API.get_ast()
+	var ast = Api.get_ast()
 	render_ast(ast)
 
 
@@ -15,7 +15,7 @@ func _process(_delta):
 
 
 func _on_script_updated():
-	var ast = API.get_ast()
+	var ast = Api.get_ast()
 	render_ast(ast)
 
 
@@ -31,4 +31,4 @@ func render_ast(ast):
 
 
 func _on_run_button_pressed():
-	get_tree().change_scene_to_file("res://src/Runtime/runtime.tscn")
+	get_tree().change_scene_to_file("res://src/runtime/runtime.tscn")

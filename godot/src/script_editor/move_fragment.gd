@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-const Constants = preload("res://src/scripts/api_interop.gd")
+const Constants = preload("res://src/util/api_interop.gd")
 
 
 # Called when the node enters the scene tree for the first time.
