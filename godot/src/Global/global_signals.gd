@@ -1,11 +1,11 @@
 extends Node
 
-signal SCRIPT_UPDATED
+signal script_updated
 
 
 func _on_script_updated():
-	print("HOOOOOOOOOOOOOOOOO")
+	print("Script update")
 
 
 func _ready():
-	print("ooooooooooooooooooo")
+	print("Global singleton ready")

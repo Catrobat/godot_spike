@@ -1,17 +1,15 @@
 extends Node
 
-const MoveFragment: Resource = preload("res://src/ScriptEditor/MoveFragment.tscn")
+const MoveFragmentLabel: Resource = preload("res://src/ScriptEditor/move_fragment_label.tscn")
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalSignals.connect("SCRIPT_UPDATED", _on_script_updated)
+	GlobalSignals.connect("script_updated", _on_script_updated)
 
 	var ast = API.get_ast()
 	render_ast(ast)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
@@ -22,7 +20,6 @@ func _on_script_updated():
 
 
 func render_ast(ast):
-	#get_node("/VBox").remove()
 	print_tree_pretty()
 
 	var code_container := $VBoxContainer/VScrollContainer/Code
@@ -30,4 +27,8 @@ func render_ast(ast):
 		code_container.remove_child(old)
 
 	for fragment in ast:
-		code_container.add_child(MoveFragment.instantiate())
+		code_container.add_child(MoveFragmentLabel.instantiate())
+
+
+func _on_run_button_pressed():
+	get_tree().change_scene_to_file("res://src/Runtime/runtime.tscn")

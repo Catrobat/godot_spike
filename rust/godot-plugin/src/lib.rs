@@ -90,7 +90,6 @@ fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
 
 // -----------------------------------------------------------
 //
-
 enum GlobalSignals {
     ScriptUpdated,
 }
@@ -99,7 +98,7 @@ fn global_notify(signal: GlobalSignals) {
     let mut global_signals = get_autoload("/root/GlobalSignals");
 
     let signal_name = match signal {
-        GlobalSignals::ScriptUpdated => "SCRIPT_UPDATED",
+        GlobalSignals::ScriptUpdated => "script_updated",
     }
     .into();
 
