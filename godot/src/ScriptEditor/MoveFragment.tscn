@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://qfu2qre10e3g"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+offset_right = 1.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MOVE [randomly]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
