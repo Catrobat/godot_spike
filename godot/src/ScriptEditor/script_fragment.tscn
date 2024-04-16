@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rsvepepjglmt"]
 
 [ext_resource type="Script" path="res://src/ScriptEditor/script_fragment.gd" id="1_koyt3"]
-[ext_resource type="PackedScene" uid="uid://btvekcxpfheas" path="res://src/ScriptEditor/add_move_fragment.tscn" id="2_llv2k"]
+[ext_resource type="PackedScene" uid="uid://btvekcxpfheas" path="res://src/ScriptEditor/move_fragment.tscn" id="2_llv2k"]
 
 [node name="ScriptEditor" type="Control"]
 layout_mode = 3
@@ -24,6 +24,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="RunButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Run"
+
 [node name="AddButton" parent="VBoxContainer" instance=ExtResource("2_llv2k")]
 layout_mode = 2
 size_flags_vertical = 0
@@ -36,3 +40,5 @@ size_flags_vertical = 3
 [node name="Code" type="VBoxContainer" parent="VBoxContainer/VScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/RunButton" to="." method="_on_run_button_pressed"]

@@ -5,4 +5,4 @@
 [node name="GlobalSignals" type="Node"]
 script = ExtResource("1_kgsmt")
 
-[connection signal="SCRIPT_UPDATED" from="." to="." method="_on_script_updated"]
+[connection signal="script_updated" from="." to="." method="_on_script_updated"]

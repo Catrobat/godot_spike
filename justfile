@@ -1,12 +1,10 @@
 # -------------
 # Settings
-
 export ANDROID_HOME := `echo "$PWD/dependencies/android-sdk"`
 export ANDROID_SDK_ROOT := `echo "$PWD/dependencies/android-sdk"`
 
 # -------------
 # Internal Helpers
-
 message := "echo -e \"\n==> \""
 rustdir := "cd rust;"
 godotdir := "cd godot;"
@@ -14,7 +12,6 @@ android_keystore := "secrets/debug.keystore"
 
 # -------------
 # Export binaries for different platforms
-
 linux-debug:
 	{{rustdir}} cargo build
 	{{godotdir}} godot --headless --export-debug "Linux/X11" "../export/linux/Godot Spike.x86_64"
@@ -39,20 +36,16 @@ windows-release:
 	{{rustdir}} cargo build --target x86_64-pc-windows-gnu --release
 	{{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
 
-
 # -------------
 # TODO: Build for IOS
-
 [macos]
 rust-ios:
     # NOTE: can only work on MacOS with xcode
     # untested
     {{rustdir}} cargo +aarch64-apple-ios build --release
 
-
 # -------------
 # Execute prior to development of project
-
 setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-windows setup-android setup-ios
 
 setup-verify-dependencies:

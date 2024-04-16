@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btvekcxpfheas"]
 
-[ext_resource type="Script" path="res://src/scripts/move_fragment.gd" id="1_8vnpa"]
+[ext_resource type="Script" path="res://src/ScriptEditor/move_fragment.gd" id="1_8vnpa"]
 
 [node name="VBox" type="VBoxContainer"]
 custom_minimum_size = Vector2(480, 0)
@@ -19,4 +19,3 @@ text = "Move[X, Y]"
 script = ExtResource("1_8vnpa")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="updated_ast" from="Button" to="Button" method="_on_updated_ast"]

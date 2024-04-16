@@ -13,6 +13,7 @@ config_version=5
 config/name="Godot Spike"
 run/main_scene="res://src/ProjectSelector/project_selector.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://assets/ui/icon.svg"
 
 [autoload]
@@ -23,6 +24,8 @@ GlobalSignals="*res://src/Global/global_signals.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/handheld/orientation=1
 
 [editor_plugins]
