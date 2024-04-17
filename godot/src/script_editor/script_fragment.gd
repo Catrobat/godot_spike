@@ -4,7 +4,7 @@ const MoveFragmentLabel: Resource = preload("res://src/script_editor/move_fragme
 
 
 func _ready():
-	GlobalSignals.connect("script_updated", _on_script_updated)
+	GlobalSignals.script_updated.connect(_on_script_updated)
 
 	var ast = Api.get_ast()
 	render_ast(ast)
