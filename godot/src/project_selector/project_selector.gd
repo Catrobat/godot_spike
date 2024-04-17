@@ -12,6 +12,11 @@ func _ready():
 		_on_new_project_button_pressed
 	)
 	$CreateProjectWindow.hide()
+	call_deferred("open_menu")
+
+
+func open_menu() -> void:
+	$MarginContainer/VBoxContainer/YourProjectsMenuButton.show_popup()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
