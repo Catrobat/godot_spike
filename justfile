@@ -46,7 +46,7 @@ rust-ios:
 
 # -------------
 # Execute prior to development of project
-setup: setup-verify-dependencies setup-debug-keystore setup-rust setup-windows setup-android setup-ios
+setup: setup-verify-dependencies setup-precommit setup-debug-keystore setup-rust setup-windows setup-android setup-ios
 
 setup-verify-dependencies:
 	@ {{message}} "Verifying all required programs are installed...\nAll programs need to be in \$PATH!"
