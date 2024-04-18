@@ -1,19 +1,23 @@
-use godot::builtin::Array;
-use godot::engine::Engine;
-use godot::prelude::*;
+// Main entry point from the Godot side.
+//
+// Registers an Engine Singleton.
+// Provides the Top-Level API to GDScript.
 
-use std::sync::{Mutex, OnceLock};
+use godot::builtin::Array;
+use godot::prelude::*;
 
 use compiler::Ast;
 use compiler::Compilable;
+use godot::engine::Engine;
+
+use crate::signals::*;
+use crate::state::*;
+
+mod signals;
+mod state;
 
 // Register this plugin as a Godot Extension
 struct MyExtension {}
-
-fn ast() -> &'static Mutex<Ast> {
-    static AST: OnceLock<Mutex<Ast>> = OnceLock::new();
-    AST.get_or_init(|| Mutex::new(Ast::default()))
-}
 
 #[gdextension]
 unsafe impl ExtensionLibrary for MyExtension {
@@ -60,6 +64,17 @@ impl Api {
     }
 
     #[func]
+    fn get_all_sprites() -> Array<GString> {
+        todo!("not implemented")
+    }
+
+    #[func]
+    fn set_current_sprite(id: i64) {
+        let mut state = editor_state().lock().unwrap();
+        state.set_current_sprite(id);
+    }
+
+    #[func]
     fn compile() -> GString {
         let ast = ast().lock().unwrap();
         ast.compile().into()
@@ -90,30 +105,3 @@ fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
 
 // -----------------------------------------------------------
 //
-enum GlobalSignals {
-    ScriptUpdated,
-}
-
-fn global_notify(signal: GlobalSignals) {
-    let mut global_signals = get_autoload("/root/GlobalSignals");
-
-    let signal_name = match signal {
-        GlobalSignals::ScriptUpdated => "script_updated",
-    }
-    .into();
-
-    global_signals.emit_signal(signal_name, &[]);
-}
-
-fn get_autoload(name: &str) -> Gd<Node> {
-    let name: NodePath = StringName::from(name).into();
-
-    Engine::singleton()
-        .get_main_loop()
-        .expect("could not get main loop")
-        .cast::<SceneTree>()
-        .get_root()
-        .expect("could not get root of scene")
-        .get_node(name)
-        .expect("could not find element in scene")
-}
