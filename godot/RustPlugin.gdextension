@@ -12,7 +12,7 @@ android.debug.arm64    = "res://../rust/target/aarch64-linux-android/release/lib
 windows.debug.x86_64 =   "res://../rust/target/x86_64-pc-windows-gnu/debug/libgodot_plugin.dll.a"
 windows.release.x86_64 = "res://../rust/target/x86_64-pc-windows-gnu/release/libgodot_plugin.dll.a"
 
-#macos.debug =            "res://../rust/target/debug/lib{YourCrate}.dylib"
-#macos.release =          "res://../rust/target/release/lib{YourCrate}.dylib"
+macos.debug =            "res://../rust/target/debug/libgodot_plugin.dylib"
+macos.release =          "res://../rust/target/release/libgodot_plugin.dylib"
 #macos.debug.arm64 =      "res://../rust/target/debug/lib{YourCrate}.dylib"
 #macos.release.arm64 =    "res://../rust/target/release/lib{YourCrate}.dylib"
