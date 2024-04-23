@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://rsvepepjglmt"]
+
+[ext_resource type="Script" path="res://src/script_editor/button_run.gd" id="1_2l7lb"]
+[ext_resource type="Script" path="res://src/script_editor/button_add.gd" id="2_vfewj"]
+[ext_resource type="Script" path="res://src/script_editor/auto_refresh_fragments.gd" id="3_6u76r"]
+
+[node name="ScriptEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Run"
+script = ExtResource("1_2l7lb")
+
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add Move"
+script = ExtResource("2_vfewj")
+
+[node name="VScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AutoRefresh" type="VBoxContainer" parent="VBoxContainer/VScrollContainer"]
+layout_mode = 2
+script = ExtResource("3_6u76r")
+
+[node name="Code" type="VBoxContainer" parent="VBoxContainer/VScrollContainer/AutoRefresh"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RunButton" to="VBoxContainer/HBoxContainer/RunButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddButton" to="VBoxContainer/HBoxContainer/AddButton" method="_on_pressed"]

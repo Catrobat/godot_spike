@@ -41,4 +41,4 @@ func _drop_data(_at_position, data):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://src/script_editor/script_fragment.tscn")
+	get_tree().change_scene_to_file("res://src/script_editor/main.tscn")
