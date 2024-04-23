@@ -22,21 +22,21 @@ linux-release:
 	{{rustdir}} cargo build --release
 	{{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
 
+[linux]
 android-debug:
 	{{rustdir}} cargo build --target aarch64-linux-android
 	{{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
 
+[linux]
 android-release:
 	{{rustdir}} cargo build --target aarch64-linux-android --release
 	{{godotdir}} godot --headless --export-release "Android" "../export/android/Godot Spike.apk"
 
-[linux]
 [windows]
 windows-debug:
-	{{rustdir}} cargo build --target x86_64-pc-windows-gnu
+	{{rustdir}} cargo build --target x86_64-pc-windows-msvc
 	{{godotdir}} godot --headless --export-debug "Windows Desktop" "../export/windows/Godot Spike.exe"
 
-[linux]
 [windows]
 windows-release:
 	{{rustdir}} cargo build --target x86_64-pc-windows-gnu --release
@@ -67,7 +67,7 @@ ios-release:
 # -------------------------------------------------
 # Execute prior to development of project
 setup:
-	just setup-verify-dependencies _setup-precommit _setup-rust _setup-android _setup-debug-keystore _setup-{{os()}}
+	just setup-verify-dependencies _setup-precommit _setup-rust _setup-{{os()}}
 
 # -------------------------------------------------
 # Execute to verify if all dependencies are installed
@@ -109,3 +109,4 @@ _setup-macos:
 
 _setup-linux:
     @ {{message}} "Setup Linux build tools..."
+    just _setup-android _setup-debug-keystore 
