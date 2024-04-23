@@ -50,7 +50,7 @@ func _on_project_name_line_edit_text_changed(new_text):
 
 
 func _on_new_project_button_pressed(_id: int):
-	get_tree().change_scene_to_file("res://src/sprite_selector/add_sprite.tscn")
+	get_tree().change_scene_to_file("res://src/sprite_selector/main.tscn")
 
 
 func _on_your_projects_menu_button_pressed():

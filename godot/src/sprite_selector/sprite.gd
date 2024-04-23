@@ -38,3 +38,7 @@ func get_preview_controll():
 func _drop_data(_at_position, data):
 	var node = get_parent().get_node(data.get_path())
 	get_parent().move_child(node, target)
+
+
+func _on_pressed():
+	get_tree().change_scene_to_file("res://src/script_editor/main.tscn")
