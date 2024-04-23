@@ -1,6 +1,5 @@
 extends Control
 
-@onready var timer = $ButtonTimer
 @onready var target = 0
 
 
