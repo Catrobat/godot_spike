@@ -7,5 +7,3 @@ linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 
 
-[build]
-rustc-wrapper = "/home/alex/.local/share/cargo/bin/sccache"
