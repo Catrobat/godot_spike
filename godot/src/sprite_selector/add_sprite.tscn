@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs2465qtho3bu"]
 
-[ext_resource type="Script" path="res://src/sprite_selector/add_sprite.gd" id="1_30kba"]
+[ext_resource type="Script" path="res://src/sprite_selector/add_sprite.gd" id="1_w6ncu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kefq6"]
 
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_72i0i")
+script = ExtResource("1_w6ncu")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a File"
@@ -78,4 +78,3 @@ size_flags_vertical = 3
 
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" to="." method="_on_add_sprite_button_pressed"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" to="VBoxContainer2/VBox" method="_on_add_number_button_pressed"]

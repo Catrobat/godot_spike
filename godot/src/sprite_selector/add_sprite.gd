@@ -5,7 +5,7 @@ var Sprites: Resource = preload("res://src/sprite_selector/sprite.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  # _on_file_dialog_file_selected("Default Sprite")
+	# _on_file_dialog_file_selected("Default Sprite")
 	pass  # Replace with function body.
 	#$VBoxContainer2/VBox/ScrollContainer/VBoxIntems.add_to_group("DRAGABLE")
 
