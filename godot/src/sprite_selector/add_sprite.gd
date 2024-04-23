@@ -5,7 +5,9 @@ var Sprites: Resource = preload("res://src/sprite_selector/sprite.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_on_file_dialog_file_selected("Default Sprite")
+  # _on_file_dialog_file_selected("Default Sprite")
+	pass  # Replace with function body.
+	#$VBoxContainer2/VBox/ScrollContainer/VBoxIntems.add_to_group("DRAGABLE")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,7 +28,8 @@ func _on_file_dialog_file_selected(path):
 	margin_container.add_theme_constant_override("margin_left", margin_value)
 	margin_container.add_theme_constant_override("margin_bottom", margin_value / 2)
 	margin_container.add_theme_constant_override("margin_right", margin_value)
-	margin_container.add_child(sprite)
+	#margin_container.add_child(sprite)
 	#get_node("VBox/ScrollContainer/VBoxContainer").add_child(margin_container)
-	get_node("VBoxContainer2/VBox/ScrollContainer/VBoxIntems").add_child(margin_container)
+	#get_node("VBoxContainer2/VBox/ScrollContainer/VBoxIntems").add_child(margin_container)
+	get_node("VBoxContainer2/VBox/ScrollContainer/VBoxIntems").add_child(sprite)
 	print_tree_pretty()
