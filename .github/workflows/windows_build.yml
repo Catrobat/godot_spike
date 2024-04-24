@@ -1,0 +1,29 @@
+name: Windows Build Test
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -Dwarnings
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  rust-build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: "rust -> target"
+    - name: Rust Build
+      run: cd rust; cargo build --release
+
+  rust-test:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: "rust -> target"
+    - name: Rust Run tests
+      run: cd rust; cargo test
