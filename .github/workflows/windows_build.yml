@@ -15,6 +15,7 @@ jobs:
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: "rust -> target"
+        cache-all-crates: "true"
     - name: Rust Build
       run: cd rust; cargo build --release
 
@@ -25,5 +26,6 @@ jobs:
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: "rust -> target"
+        cache-all-crates: "true"
     - name: Rust Run tests
       run: cd rust; cargo test
