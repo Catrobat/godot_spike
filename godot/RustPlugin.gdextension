@@ -6,13 +6,15 @@ reloadable = false
 [libraries]
 linux.release.x86_64 =   "res://../rust/target/release/libgodot_plugin.so"
 linux.debug.x86_64 =     "res://../rust/target/debug/libgodot_plugin.so"
+
 android.release.arm64  = "res://../rust/target/aarch64-linux-android/debug/libgodot_plugin.so"
 android.debug.arm64    = "res://../rust/target/aarch64-linux-android/release/libgodot_plugin.so"
 
-windows.debug.x86_64 =   "res://../rust/target/x86_64-pc-windows-gnu/debug/libgodot_plugin.dll.a"
-windows.release.x86_64 = "res://../rust/target/x86_64-pc-windows-gnu/release/libgodot_plugin.dll.a"
+windows.debug.x86_64 =   "res://../rust/target/debug/godot_plugin.dll"
+windows.release.x86_64 = "res://../rust/target/release/godot_plugin.dll"
 
 macos.debug =            "res://../rust/target/debug/libgodot_plugin.dylib"
 macos.release =          "res://../rust/target/release/libgodot_plugin.dylib"
+
 #macos.debug.arm64 =      "res://../rust/target/debug/lib{YourCrate}.dylib"
 #macos.release.arm64 =    "res://../rust/target/release/lib{YourCrate}.dylib"

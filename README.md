@@ -2,19 +2,21 @@
 
 ## Install All Development Dependencies
 
-- Godot
-- rust (ideally latest stable version via rustup)
-- mold (distro repositories)
-- just (cargo install)
+- Godot \
   IMPORTANT: Needs to be in the path!
-- gdtoolkit (distro repos / pip install)
+- rust (ideally latest stable version via rustup)
+- just (cargo install just) \
+  IMPORTANT: Needs to be in the path!
+- gdtoolkit (pip install gdtoolkit) \
   IMPORTANT: Binaries of this toolkit need to be in the path!
-
-Recommended:
-- pre-commit
+- pre-commit (pip install pre-commit)
 
 For Windows Builds:
-- mingw-w64 (or mingw-w64-gcc)
+- mingw-w64, taken from here [MinGW](https://github.com/mstorsjo/llvm-mingw/releases) \
+  IMPORTANT: Needs to be in the path!
+
+For Linux Builds:
+- mold (distro repositories) recommended
 
 ## Set up the Repository
 
@@ -24,7 +26,7 @@ just setup
 
 This command will
 - check whether all development dependencies are present and in $PATH
-- generate development signing keys for Android
+- generate development signing keys for Android if developing on a Linux system
 - install pre-commit hooks (automatic formatting and linting before a commit)
 - install the necessary rust components
 
