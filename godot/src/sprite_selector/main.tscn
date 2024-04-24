@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bs2465qtho3bu"]
 
-[ext_resource type="Script" path="res://src/sprite_selector/main.gd" id="1_w6ncu"]
-[ext_resource type="Script" path="res://src/sprite_selector/sprite_list.gd" id="2_y3h1p"]
+[ext_resource type="Script" path="res://src/sprite_selector/button_add_sprite.gd" id="2_66054"]
+[ext_resource type="Script" path="res://src/sprite_selector/auto_refresh_sprites.gd" id="2_wryc7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kefq6"]
 
@@ -16,19 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_w6ncu")
-
-[node name="FileDialog" type="FileDialog" parent="."]
-title = "Open a File"
-size = Vector2i(479, 400)
-exclusive = false
-ok_button_text = "Open"
-dialog_hide_on_ok = true
-dialog_autowrap = true
-file_mode = 0
-access = 2
-filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg")
-use_native_dialog = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_direction = 2
@@ -63,6 +50,15 @@ size_flags_horizontal = 0
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_kefq6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s6hla")
 text = "Add Sprite"
+script = ExtResource("2_66054")
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton"]
+title = "Open a File"
+size = Vector2i(511, 159)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
 
 [node name="VBox" type="VBoxContainer" parent="VBoxContainer2"]
 layout_mode = 2
@@ -72,11 +68,14 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxIntems" type="VBoxContainer" parent="VBoxContainer2/VBox/ScrollContainer"]
+[node name="AutoRefresh" type="VBoxContainer" parent="VBoxContainer2/VBox/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("2_wryc7")
+
+[node name="VBoxIntems" type="VBoxContainer" parent="VBoxContainer2/VBox/ScrollContainer/AutoRefresh"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("2_y3h1p")
 
-[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" to="." method="_on_add_sprite_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" to="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" method="_on_pressed"]
+[connection signal="file_selected" from="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton/FileDialog" to="VBoxContainer2/HBoxContainer/MarginContainer/AddSpriteButton" method="_on_file_dialog_file_selected"]

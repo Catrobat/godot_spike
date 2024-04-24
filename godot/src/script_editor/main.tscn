@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/script_editor/button_run.gd" id="1_2l7lb"]
 [ext_resource type="Script" path="res://src/script_editor/button_add.gd" id="2_vfewj"]
-[ext_resource type="Script" path="res://src/script_editor/auto_refresh_fragments.gd" id="3_6u76r"]
+[ext_resource type="Script" path="res://src/script_editor/auto_refresh_sprites.gd" id="3_po0h4"]
 
 [node name="ScriptEditor" type="Control"]
 layout_mode = 3
@@ -44,7 +44,7 @@ size_flags_vertical = 3
 
 [node name="AutoRefresh" type="VBoxContainer" parent="VBoxContainer/VScrollContainer"]
 layout_mode = 2
-script = ExtResource("3_6u76r")
+script = ExtResource("3_po0h4")
 
 [node name="Code" type="VBoxContainer" parent="VBoxContainer/VScrollContainer/AutoRefresh"]
 layout_mode = 2

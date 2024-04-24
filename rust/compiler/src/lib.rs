@@ -1,6 +1,6 @@
 pub mod ast;
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct Ast {
     statements: Vec<ast::Statement>,
 }

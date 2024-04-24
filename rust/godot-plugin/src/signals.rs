@@ -8,11 +8,21 @@
 use godot::engine::Engine;
 use godot::prelude::*;
 
+use crate::state::editor_state;
+
 pub enum GlobalSignals {
     ScriptUpdated,
 }
 
 pub fn global_notify(signal: GlobalSignals) {
+    {
+        // NOTE: This is to aid debugging, not needed for functionality
+        let _lock = editor_state()
+            .lock()
+            .expect("You can't send a signal while holding a lock!!!");
+        // Intentionally unlocks here
+    }
+
     let mut global_signals = get_autoload("/root/GlobalSignals");
 
     let signal_name = match signal {

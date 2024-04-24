@@ -2,4 +2,4 @@ extends Button
 
 
 func _on_pressed():
-	API.insert(200)
+	API.ast_add(200)

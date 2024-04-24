@@ -52,32 +52,51 @@ struct Api {
 #[godot_api]
 impl Api {
     #[func]
-    fn insert(&self, _x: i64) {
-        ast().lock().unwrap().append();
+    fn ast_add(&self, _x: i64) {
+        {
+            let mut state = editor_state().lock().unwrap();
+            let sprite_id: SpriteID = state.get_current_sprite();
+            state.project[sprite_id].ast.append();
+        } // End Lock
+
         global_notify(GlobalSignals::ScriptUpdated);
     }
 
     #[func]
     fn get_ast() -> Array<i64> {
-        let ast = ast().lock().unwrap();
-        ast.to_godot_ast()
+        let state = editor_state().lock().unwrap();
+        let sprite_id: SpriteID = state.get_current_sprite();
+        state.project[sprite_id].ast.to_godot_ast()
     }
 
     #[func]
-    fn get_all_sprites() -> Array<GString> {
-        todo!("not implemented")
+    fn sprite_add(&self, path: GString) {
+        {
+            let mut state = editor_state().lock().unwrap();
+            state.project.push(Sprite::new(&path.to_string()));
+        } // End Lock
+
+        global_notify(GlobalSignals::ScriptUpdated);
+    }
+
+    #[func]
+    fn sprite_get_all() -> Array<GString> {
+        let state = editor_state().try_lock().expect("could not lockie lockie");
+        state.project.iter().map(|x| x.path.to_godot()).collect()
     }
 
     #[func]
     fn set_current_sprite(id: i64) {
         let mut state = editor_state().lock().unwrap();
-        state.set_current_sprite(id);
+        state.set_current_sprite(id as SpriteID);
     }
 
     #[func]
     fn compile() -> GString {
-        let ast = ast().lock().unwrap();
-        ast.compile().into()
+        let state = editor_state().lock().unwrap();
+        //
+        // TODO: Properly compile all the sprites
+        state.project[0].ast.compile().into()
     }
 }
 

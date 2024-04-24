@@ -15,7 +15,7 @@ pub struct Commands {
     commands: Vec<Statement>,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum Statement {
     Move(),
     Message(Message),
@@ -23,14 +23,14 @@ pub enum Statement {
 }
 
 #[allow(dead_code)]
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Message {
     from: String,
     to: String,
     contents: Expression,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub enum Expression {
     Addition(Box<Expression>, Box<Expression>),
     Subtraction(Box<Expression>, Box<Expression>),
