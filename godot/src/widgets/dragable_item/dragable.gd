@@ -7,11 +7,11 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.pressed.connect(_on_pressed)  # Replace with function body.
+	button_up.connect(_on_pressed)
 
 
 func _on_pressed():
-	assert(false, "methon not implemented")
+	assert(false, "method not implemented")
 
 
 func _get_drag_data(_at_position: Vector2):
