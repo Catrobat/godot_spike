@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://rsvepepjglmt"]
+[gd_scene load_steps=2 format=3 uid="uid://bjdm28mndcbcx"]
 
 [ext_resource type="Script" path="res://src/sprite_selector/sprite.gd" id="1_p6m3n"]
 
-[node name="SpriteButton" type="Button"]
-clip_contents = true
-custom_minimum_size = Vector2(100, 100)
-offset_right = 100.0
-offset_bottom = 200.0
+[node name="SpriteTest" type="Button"]
+custom_minimum_size = Vector2(0, 97)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
 size_flags_horizontal = 3
-button_mask = 3
 script = ExtResource("1_p6m3n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -30,5 +30,3 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]
