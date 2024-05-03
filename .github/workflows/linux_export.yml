@@ -39,7 +39,6 @@ jobs:
           set -x
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
-          cargo build --manifest-path=rust/Cargo.toml
           just linux-release
 
   export-android:
@@ -84,5 +83,4 @@ jobs:
           export GODOT_ANDROID_KEYSTORE_RELEASE_USER="androiddebugkey"
           export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD="android"
           just setup-android
-          cargo build --manifest-path=rust/Cargo.toml
           just android-release
