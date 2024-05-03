@@ -27,7 +27,7 @@ just setup
 
 This command will
 - check whether all development dependencies are present and in $PATH
-- generate development signing keys for Android if developing on a Linux system
+- generate development signing keys for Android
 - install pre-commit hooks (automatic formatting and linting before a commit)
 - install the necessary rust components
 
