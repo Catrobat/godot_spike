@@ -8,8 +8,10 @@
 - just (cargo install just) \
   IMPORTANT: Needs to be in the path!
 - gdtoolkit (pip install gdtoolkit) \
-  IMPORTANT: Binaries of this toolkit need to be in the path!
+  IMPORTANT: Needs to be in the path!
 - pre-commit (pip install pre-commit)
+- sh: included in Git Bash for Windows. \
+  IMPORTANT: Needs to be in the path!
 
 For Windows Builds:
 - mingw-w64, taken from here [MinGW](https://github.com/mstorsjo/llvm-mingw/releases) \
