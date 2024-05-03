@@ -5,7 +5,7 @@
 // From there the signals can be further dispached in GDScript
 // by connecting to this signal.
 
-use godot::engine::Engine;
+use godot::engine::{Engine, Node};
 use godot::prelude::*;
 
 pub enum GlobalSignals {
@@ -25,13 +25,12 @@ pub fn global_notify(signal: GlobalSignals) {
 
 fn get_autoload(name: &str) -> Gd<Node> {
     let name: NodePath = StringName::from(name).into();
-
     Engine::singleton()
         .get_main_loop()
         .expect("could not get main loop")
         .cast::<SceneTree>()
         .get_root()
         .expect("could not get root of scene")
-        .get_node(name)
-        .expect("could not find element in scene")
+        .get_node_or_null(name)
+        .expect("node should not be null")
 }

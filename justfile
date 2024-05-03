@@ -15,27 +15,31 @@ linux-debug:
 
 [linux]
 linux-release:
-	{{rustdir}} cargo build --release
-	{{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
+    {{rustdir}} cargo build
+    {{rustdir}} cargo build --release
+    {{godotdir}} godot --headless --export-release "Linux/X11" "../export/linux/Godot Spike.x86_64"
 
 [linux]
 android-debug:
-	{{rustdir}} cargo build --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"../dependencies/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang\"
-	{{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
+    {{rustdir}} cargo build
+    {{rustdir}} cargo build --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"../dependencies/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang\"
+    {{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
 
 [linux]
 android-release:
+    {{rustdir}} cargo build
     {{rustdir}} cargo build --release --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"../dependencies/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang\"
-    ls rust/target
     {{godotdir}} godot --headless --export-release "Android" "../export/android/Godot Spike.apk"
 
 [windows]
 android-debug:
+    {{rustdir}} cargo build --target x86_64-pc-windows-msvc
     {{rustdir}} cargo build --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"../dependencies/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android34-clang.cmd\"
     {{godotdir}} godot --headless --export-debug "Android" "../export/android/Godot Spike.apk"
 
 [windows]
 android-release:
+    {{rustdir}} cargo build --target x86_64-pc-windows-msvc
     {{rustdir}} cargo build --release --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"../dependencies/android-sdk/ndk/26.3.11579264/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android34-clang.cmd\"
     {{godotdir}} godot --headless --export-release "Android" "../export/android/Godot Spike.apk"
 
@@ -46,8 +50,9 @@ windows-debug:
 
 [windows]
 windows-release:
-	{{rustdir}} cargo build --release --target x86_64-pc-windows-msvc
-	{{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
+    {{rustdir}} cargo build --target x86_64-pc-windows-msvc
+    {{rustdir}} cargo build --release --target x86_64-pc-windows-msvc
+    {{godotdir}} godot --headless --export-release "Windows Desktop" "../export/windows/Godot Spike.exe"
 
 [macos]
 macos-debug:
