@@ -6,7 +6,6 @@
   IMPORTANT: Needs to be in the path!
 - rust (ideally latest stable version via rustup)
 - just (cargo install just) \
-  IMPORTANT: Needs to be in the path!
 - gdtoolkit (pip install gdtoolkit) \
   IMPORTANT: Needs to be in the path!
 - pre-commit (pip install pre-commit)
