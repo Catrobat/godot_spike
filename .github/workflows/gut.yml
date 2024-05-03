@@ -1,5 +1,6 @@
 name: "Godot"
-on: push
+
+on: [push]
 
 jobs:
   execute-gut:
@@ -11,6 +12,6 @@ jobs:
       - name: Execute GUT Unit Test
         uses: ceceppa/godot-gut-ci@main
         with:
-          godot_version: 4.2.1
+          godot_version: 4.2.2
           gut_params: -gdir=res://src/test/unit -gprefix=test_ -gsuffix=.gd
           project_path: godot
