@@ -2,10 +2,10 @@
  "background_color": "262626ff",
  "compact_mode": false,
  "configured_dirs": [
-  "res://src/test"
+  "res://src/test/unit"
  ],
  "dirs": [
-  "res://src/test"
+  "res://src/test/unit"
  ],
  "disable_colors": false,
  "double_strategy": 1,

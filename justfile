@@ -56,17 +56,18 @@ windows-release:
 
 [macos]
 macos-debug:
-	{{rustdir}} cargo build 
+	{{rustdir}} cargo build
 	{{godotdir}} godot --headless --export-debug "macOS" "../export/macos/Godot Spike.dmg"
 
 [macos]	
 macos-release:
-	{{rustdir}} cargo build --release
-	{{godotdir}} godot --headless --export-release "macOS" "../export/macos/Godot Spike.dmg"
+    {{rustdir}} cargo build
+    {{rustdir}} cargo build --release
+    {{godotdir}} godot --headless --export-release "macOS" "../export/macos/Godot Spike.dmg"
 
 [macos]
 ios-debug:
-    # NOTE: can only work on MacOS with xcode
+    {{rustdir}} cargo build
     {{rustdir}} cargo build --target aarch64-apple-ios
     {{godotdir}} godot --headless --export-debug "iOS" "../export/ios/Godot Spike.ipa"
 
@@ -82,7 +83,6 @@ setup:
 	just _setup-verify-dependencies _setup-precommit _setup-rust setup-{{os()}}
 
 # -------------------------------------------------
-# Execute to verify if all dependencies are installed
 _setup-verify-dependencies:
 	@ {{message}} "Verifying all required programs are installed...\nAll programs need to be in \$PATH!"
 	rustup --version
@@ -106,7 +106,7 @@ setup-windows:
 	rustup target add x86_64-pc-windows-gnu
 
 [macos]
-setup-macos:
+setup-ios:
 	@ {{message}} "Installing Rust tools for iOS builds..."
 	rustup target add aarch64-apple-ios
 	cargo install cargo-lipo
