@@ -1,4 +1,4 @@
-name: Windows Build
+name: MacOS Build
 
 on: [push]
 
@@ -9,14 +9,17 @@ env:
 
 jobs:
   rust-build:
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: rui314/setup-mold@v1
+      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
           components: rustfmt, clippy
+
       - uses: Swatinem/rust-cache@v2
         with:
           workspaces: "rust -> target"
@@ -25,9 +28,10 @@ jobs:
         run: cd rust; cargo build --release
 
   rust-test:
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: rui314/setup-mold@v1
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
