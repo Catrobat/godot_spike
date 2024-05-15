@@ -7,7 +7,7 @@ android_keystore := "secrets/debug.keystore"
 
 # -------------------------------------------------
 # Build and export binaries for different platforms
-# Sometimes there are 'same' commands, but for different OS 
+# Sometimes there are 'same' commands, but for different OS
 [linux]
 linux-debug:
 	{{rustdir}} cargo build
