@@ -42,7 +42,7 @@ jobs:
       - name: Godot Export
         run: |
           set -x
-          godot godot/project.godot --headless --import -q
+          mkdir godot/.godot
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
           just linux-release

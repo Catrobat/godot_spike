@@ -1,0 +1,51 @@
+name: Windows Export
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -Dwarnings
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  export-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: sh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+      - uses: rui314/setup-mold@v1
+      - uses: chickensoft-games/setup-godot@v1
+        name: Setup Godot
+        with:
+          version: 4.2.2
+          include-templates: true
+          use-dotnet: false
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "rust -> target"
+          cache-all-crates: "true"
+
+      - name: Install just
+        run: cargo install just
+
+      - name: just Check
+        run: just --version
+
+      - name: Godot Check
+        run: |
+          godot --version
+
+      - name: Godot Export
+        run: |
+          set -x
+          mkdir godot/.godot
+          touch godot/.godot/extension_list.cfg
+          echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
+          just windows-release
