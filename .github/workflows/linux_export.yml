@@ -42,6 +42,7 @@ jobs:
       - name: Godot Export
         run: |
           set -x
+          godot godot/project.godot --headless --import -q
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
           just linux-release
@@ -84,9 +85,9 @@ jobs:
       - name: Godot Export
         run: |
           set -x
+          godot godot/project.godot --headless --import -q
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
-          godot --headless -q -e --quit
           echo "export/android/java_sdk_path = \"$(dirname $(dirname $(which java)))\"" >> ~/.config/godot/editor_settings-4.tres
           echo "export/android/android_sdk_path = \"$(pwd)/dependencies/android-sdk/\"" >> ~/.config/godot/editor_settings-4.tres
           export GODOT_ANDROID_KEYSTORE_RELEASE_PATH="$PWD/secrets/debug.keystore"
