@@ -3,6 +3,4 @@ secrets/
 export/
 rust/target/
 .godot/
-!.godot/imported/
-!.godot/global_script_class_cache.cfg
 *.vscode/

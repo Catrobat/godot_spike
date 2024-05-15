@@ -10,8 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Execute GUT Unit Test
-        uses: ceceppa/godot-gut-ci@main
+        uses: dorianpercic/godot-gut-ci@main
         with:
           godot_version: 4.2.2
-          gut_params: -gdir=res://src/test/unit -gprefix=test_ -gsuffix=.gd
+          gut_params: -gconfig=res://gut_editor_config.json
           project_path: godot
+
