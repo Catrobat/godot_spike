@@ -15,3 +15,4 @@ jobs:
           godot_version: 4.2.2
           gut_params: -gconfig=res://gut_editor_config.json
           project_path: godot
+
