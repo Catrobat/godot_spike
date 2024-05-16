@@ -56,11 +56,12 @@ windows-release:
 
 [macos]
 macos-debug:
-	{{rustdir}} cargo build 
+	{{rustdir}} cargo build
 	{{godotdir}} godot --headless --export-debug "macOS" "../export/macos/Godot Spike.dmg"
 
 [macos]	
 macos-release:
+	{{rustdir}} cargo build
 	{{rustdir}} cargo build --release
 	{{godotdir}} godot --headless --export-release "macOS" "../export/macos/Godot Spike.dmg"
 
