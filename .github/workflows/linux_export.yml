@@ -47,6 +47,15 @@ jobs:
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
           just linux-release
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Linux Godot Spike Binaries
+          path: |
+            export/linux/Godot Spike.x86_64
+            export/linux/libgodot_plugin.so
+          if-no-files-found: error
+
   export-android:
     runs-on: ubuntu-latest
     steps:
@@ -95,3 +104,12 @@ jobs:
           export GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD="android"
           just setup-android
           just android-release
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Android Godot Spike Binaries
+          path: |
+            export/android/Godot Spike.apk
+            export/android/Godot Spike.apk.idsig
+          if-no-files-found: error

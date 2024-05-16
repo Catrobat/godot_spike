@@ -20,13 +20,12 @@ script = ExtResource("1_w6ncu")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a File"
+initial_position = 1
 size = Vector2i(479, 400)
-exclusive = false
 ok_button_text = "Open"
 dialog_hide_on_ok = true
 dialog_autowrap = true
 file_mode = 0
-access = 2
 filters = PackedStringArray("*.png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 

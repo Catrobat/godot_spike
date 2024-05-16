@@ -41,3 +41,11 @@ jobs:
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
           just macos-release
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: MacOS Godot Spike Binaries
+          path: |
+            export/macos/Godot Spike.dmg
+          if-no-files-found: error

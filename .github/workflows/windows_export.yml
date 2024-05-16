@@ -49,3 +49,12 @@ jobs:
           touch godot/.godot/extension_list.cfg
           echo "res://rust.gdextension" >> godot/.godot/extension_list.cfg
           just windows-release
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows Godot Spike Binaries
+          path: |
+            export/windows/Godot Spike.exe
+            export/windows/godot_plugin.dll
+          if-no-files-found: error
