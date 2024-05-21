@@ -3,6 +3,10 @@
 // Registers an Engine Singleton.
 // Provides the Top-Level API to GDScript.
 
+mod conversion;
+mod signals;
+mod state;
+
 use godot::builtin::Array;
 use godot::prelude::*;
 
@@ -12,9 +16,6 @@ use godot::engine::Engine;
 
 use crate::signals::*;
 use crate::state::*;
-
-mod signals;
-mod state;
 
 // Register this plugin as a Godot Extension
 struct MyExtension {}
@@ -58,7 +59,7 @@ impl Api {
     }
 
     #[func]
-    fn get_ast() -> Array<i64> {
+    fn get_ast() -> ASTArray {
         let ast = ast().lock().unwrap();
         ast.to_godot_ast()
     }
@@ -81,27 +82,26 @@ impl Api {
     }
 }
 
+type ASTArray = Array<Gd<GodotASTNode>>;
+
 trait ToGodotAst {
-    fn to_godot_ast(&self) -> Array<i64>;
+    fn to_godot_ast(&self) -> ASTArray;
 }
 
 impl ToGodotAst for Ast {
-    fn to_godot_ast(&self) -> Array<i64> {
+    fn to_godot_ast(&self) -> ASTArray {
         self.statements()
             .iter()
-            .map(to_godot_ast)
-            .collect::<Array<i64>>()
+            .map(conversion::to_godot_ast)
+            .collect::<ASTArray>()
     }
 }
 
-fn to_godot_ast(a: &compiler::ast::Statement) -> i64 {
-    use compiler::ast::Statement;
-    match a {
-        Statement::Move() => 1,
-        Statement::Print(_str) => 2,
-        Statement::Message(_str) => 3,
-    }
+#[allow(dead_code)]
+#[derive(GodotClass)]
+#[class(init, base=Node)]
+struct GodotASTNode {
+    node_type: i64,
+    identifier: i64,
+    member_data: VariantArray,
 }
-
-// -----------------------------------------------------------
-//

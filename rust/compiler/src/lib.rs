@@ -7,7 +7,7 @@ pub struct Ast {
 
 impl Ast {
     pub fn append(&mut self) {
-        self.statements.push(ast::Statement::Move());
+        self.statements.push(ast::Statement::MoveRandomly());
     }
 
     pub fn statements(&self) -> &[ast::Statement] {
@@ -31,24 +31,14 @@ impl Compilable for Ast {
 
         for s in &self.statements {
             match s {
-                ast::Statement::Move() => {
-                    output.push_str("\tposition.x = 400\n\tposition.y=500\n");
+                ast::Statement::MoveRandomly() => {
+                    output.push_str("  position.x = position.x + (randi() % 11) - 4\n");
+                    output.push_str("  position.y = position.y + (randi() % 11) - 4\n");
                 }
                 _ => todo!("not implemented yet"),
             }
         }
 
-        //format!("{}", output.to_owned());
-
-        "extends Sprite2D
-
-func _ready():
-    print(\"Reeady\")
-
-func _process(_delta):
-    position.x = 200
-    position.y = 400
-        "
-        .to_owned()
+        output.to_string()
     }
 }

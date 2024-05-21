@@ -17,17 +17,10 @@ pub struct Commands {
 
 #[derive(Clone)]
 pub enum Statement {
-    Move(),
-    Message(Message),
-    Print(Expression),
-}
-
-#[allow(dead_code)]
-#[derive(Clone)]
-pub struct Message {
-    from: String,
-    to: String,
-    contents: Expression,
+    MoveRandomly(),
+    MoveRelative(i64, i64),
+    MoveTo(i64, i64),
+    Calc(Expression),
 }
 
 #[derive(Clone)]
