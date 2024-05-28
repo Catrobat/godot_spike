@@ -84,7 +84,7 @@ pub fn statement_to_godot_ast(
         Statement::Calc(x) => GodotASTNode {
             node_type: 3,
             path: current_path.clone(),
-            member_data: varray![expression_to_godot_ast(x, current_path)], // TODO: Add path to subexpr
+            member_data: varray![expression_to_godot_ast(x, current_path)],
         },
     };
 
