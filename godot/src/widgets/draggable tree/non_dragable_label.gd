@@ -4,7 +4,6 @@ extends Control
 @onready var target = 0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("draggable_node_label")
 
@@ -23,7 +22,6 @@ func get_preview_controll():
 
 func _can_drop_data(_at_position, data):
 	var node
-#	get_parent().get_parent().print_tree_pretty()
 	print("nondarg label")
 	print(data)
 	if data.is_in_group("draggable_leaf"):

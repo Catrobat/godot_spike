@@ -6,7 +6,6 @@ const TurnFragment: Resource = preload(
 
 
 func _on_pressed():
-	#print_tree_pretty()
 	API.insert(200)
 	(
 		get_tree()
@@ -14,4 +13,3 @@ func _on_pressed():
 		. get_node("VBoxContainer/VScrollContainer/AutoRefresh/Code")
 		. add_child(TurnFragment.instantiate())
 	)
-	#get_tree().get_current_scene().print_tree_pretty()
