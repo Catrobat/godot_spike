@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://rsvepepjglmt"]
+[gd_scene load_steps=7 format=3 uid="uid://rsvepepjglmt"]
 
 [ext_resource type="Script" path="res://src/script_editor/button_run.gd" id="1_2l7lb"]
 [ext_resource type="Script" path="res://src/script_editor/button_add.gd" id="2_vfewj"]
+[ext_resource type="Script" path="res://src/script_editor/AddTurnButton.gd" id="3_03kqp"]
 [ext_resource type="Script" path="res://src/script_editor/auto_refresh_fragments.gd" id="3_6u76r"]
+[ext_resource type="Script" path="res://src/script_editor/button_for.gd" id="4_kijn7"]
+[ext_resource type="Script" path="res://src/script_editor/button_while.gd" id="5_qxwii"]
 
 [node name="ScriptEditor" type="Control"]
 layout_mode = 3
@@ -37,6 +40,21 @@ layout_mode = 2
 text = "Add Move"
 script = ExtResource("2_vfewj")
 
+[node name="AddTurnButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add testnode"
+script = ExtResource("3_03kqp")
+
+[node name="AddForButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add For"
+script = ExtResource("4_kijn7")
+
+[node name="AddWhileButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add While"
+script = ExtResource("5_qxwii")
+
 [node name="VScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -44,6 +62,8 @@ size_flags_vertical = 3
 
 [node name="AutoRefresh" type="VBoxContainer" parent="VBoxContainer/VScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("3_6u76r")
 
 [node name="Code" type="VBoxContainer" parent="VBoxContainer/VScrollContainer/AutoRefresh"]
@@ -52,3 +72,6 @@ size_flags_horizontal = 3
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RunButton" to="VBoxContainer/HBoxContainer/RunButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/AddButton" to="VBoxContainer/HBoxContainer/AddButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddTurnButton" to="VBoxContainer/HBoxContainer/AddTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddForButton" to="VBoxContainer/HBoxContainer/AddForButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AddWhileButton" to="VBoxContainer/HBoxContainer/AddWhileButton" method="_on_pressed"]

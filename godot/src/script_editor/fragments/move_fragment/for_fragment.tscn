@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://oiepjld6lwrp"]
+
+[ext_resource type="Script" path="res://src/widgets/draggable tree/draggable_node.gd" id="1_o43h1"]
+[ext_resource type="Script" path="res://src/widgets/draggable tree/non_dragable_label.gd" id="2_37oc4"]
+[ext_resource type="Script" path="res://src/widgets/draggable tree/draggable_node_start.gd" id="3_wsklg"]
+
+[node name="ForFragment" type="Control"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_o43h1")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NonDragLabel" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+script = ExtResource("2_37oc4")
+
+[node name="Label" type="Label" parent="VBoxContainer2/NonDragLabel"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "For sdfsdfsdf"
+
+[node name="DragNodeStart" type="Control" parent="VBoxContainer2"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+script = ExtResource("3_wsklg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "wrwerwer"
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "wrwer"
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "werwer"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 3
+text = "werwer"
+autowrap_mode = 3
